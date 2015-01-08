@@ -1,0 +1,125 @@
+// ******************************************************************************
+// 
+//  This source code is part of the LAMB library.
+// 
+//  Written by Urban Borstnik.
+// 
+//  Inspired by CP2K and DBCSR.
+// 
+//  Copyright (C) 2012, 2013, 2014 Urban Borstnik.
+// 
+//  The LAMB library is free software: you can redistribute it and/or
+//  modify it under the terms of the GNU General Public License as
+//  published by the Free Software Foundation, either version 2 of the
+//  License, or (at your option) any later version.
+// 
+//  LAMB is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+//  General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with LAMB.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  If you want to redistribute modifications, please note that derived
+//  work must not be called LAMB, Lamb, lamb, libLAMB, libLamb, liblamb
+//  nor any other case variation.  Details are found in the README &
+//  COPYING files.  If they are missing, get the official version at the
+//  http://lamb.borstnik.net/ website.
+// 
+//  We ask you to cite the published articles on this software.  You can
+//  find a list in the README file in the main directory.
+// 
+// ******************************************************************************
+/// \page Theory LAMB Theory
+///
+/// \section Definitions
+///
+/// \subsection spatial_decomposition Spatial Partition
+///
+/// \par Space \anchor Space
+/// Every particle is located somewhere in space.
+///
+/// \par Cube \anchor Cube
+/// Space is partitioned into cubes.
+///
+/// \par Region \anchor Region
+/// A group of cubes. The number of regions \f R\f should be approximately
+/// the square root of the number of processes\f P\f: \f R\prop P\f.
+///
+/// \subsection system_decomposition System Partition
+///
+/// \par System \anchor System
+/// All particles of interest are part of a system.
+///
+/// \par Subset \anchor Subset
+/// The system is partitioned into subsets \f S\f. By default this is done
+/// according to the partition of space into cubes.
+///
+/// \subsection Tuples
+///
+/// \par Sector \anchor Sector
+/// A sector is a tuple of subsets.
+/// 
+/// \par Realm \anchor Realm
+/// A realm is a tuple of regions (comparable to sectors). The number
+/// of realms is at most proportional to the number of processors.
+///
+///
+/// \subsection Maps
+///
+/// Fundamentally there must be a way to map a subset tuples (sectors) to a process.
+/// Each sector is first mapped to a realm, which is mapped to a process.
+///
+/// \par Catalog \anchor Catalog
+/// A list of regions in which a process lies.
+///
+/// \par Orbit \anchor Orbit
+/// The set of processes that share any region in their catalog.
+///
+/// \par Region Pool \anchor Region_pool
+/// The set of processes that lie in a region.
+///
+/// \subsection Reference
+/// The \ref lamb_plexus_types "Plexus" ties these concepts together.
+///
+/// \section Operation
+///
+/// LAMB's premise is that the sparsity patterns arising from
+/// differences is spatial separation can be used to limit the
+/// communication between processes.  It achieves this by limiting the
+/// number of processes each process communicates with
+/// \f$\mathcal{O}(\sqrt P) \f$, where \f$ P \f$ is the number of
+/// processes used. The goal is <em>not</em> to be theoretically
+/// optimal but to take advantage of sparsity patterns with a minimal
+/// computational overhead and minimal adjustments due to gradual
+/// changes in sparsity patterns.
+///
+/// \subsection limiting_communication Limiting Communication
+///
+/// Space is partitioned into cubes. The spatial partition also
+/// defines the partition of the system into subsets. Cubes are
+/// grouped into regions, which are defined so that the number of
+/// regions is on the order of the square root of the number of
+/// processes: \f$ |\textbf{R}| \in \mathcal{O}(\sqrt P) \f$. A group
+/// should not contain adjacent cubes; they should be interleaved
+/// instead.  Systematically dropping distant subset products brings
+/// the real savings.
+///
+/// The set of realms \f$\textbf{G}\f$ contains the cross product of
+/// regions, \f$\textbf{R}\times\textbf{R}\f$.  The density of all the
+/// realms should be as uniform as possible.  Processes are associated
+/// with realms, keeping the number of processes per realm as well as
+/// the realms per processes as small as possible. These associations
+/// are stored in the catalog (regions associated with a given
+/// process) and a region pool (processes associated with a given
+/// region).
+///
+/// The main premises that ensure the timing relations remain valid are:
+/// - Any process \f$p\in\textbf{P}\f$ deals with a limited number of subsets. These
+///   sets are in its "Catalog" with a size limited to \f$\mathcal{O}(\sqrt{S})\in\mathcal{O}(\sqrt{P})\f$. (limit
+///   catalog sizes)
+/// - Any subset must be shared by a limited number of processes. (limit
+///   pool sizes)
+/// - All subsets in the processes catalog of process \f$p\in\textbf{P}\f$ must not be
+///   in the catalog of more than \f$\mathcal{O}(\sqrt P)\f$ other processes. (limit orbit sizes).

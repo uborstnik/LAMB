@@ -1,0 +1,23 @@
+module lamb_matrix_tests
+
+#include "lamb_defs.h"
+
+#include "lamb_matrix_tests.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_matrix_tests'
+
+
+#include "lamb_matrix_tests.publics"
+
+#include "lamb_matrix_tests.interfaces"
+
+
+  contains
+
+#include "lamb_matrix_tests.contains"
+
+end module lamb_matrix_tests

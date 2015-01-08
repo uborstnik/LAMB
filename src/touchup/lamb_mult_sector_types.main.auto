@@ -1,0 +1,23 @@
+module lamb_mult_sector_types
+
+#include "lamb_defs.h"
+
+#include "lamb_mult_sector_types.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_mult_sector_types'
+
+
+#include "lamb_mult_sector_types.publics"
+
+#include "lamb_mult_sector_types.interfaces"
+
+
+  contains
+
+#include "lamb_mult_sector_types.contains"
+
+end module lamb_mult_sector_types

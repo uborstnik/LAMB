@@ -1,0 +1,23 @@
+module lamb_array_1d_types
+
+#include "lamb_defs.h"
+
+#include "lamb_array_1d_types.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_array_1d_types'
+
+
+#include "lamb_array_1d_types.publics"
+
+#include "lamb_array_1d_types.interfaces"
+
+
+  contains
+
+#include "lamb_array_1d_types.contains"
+
+end module lamb_array_1d_types

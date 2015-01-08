@@ -1,0 +1,23 @@
+module lamb_data_types
+
+#include "lamb_defs.h"
+
+#include "lamb_data_types.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_data_types'
+
+
+#include "lamb_data_types.publics"
+
+#include "lamb_data_types.interfaces"
+
+
+  contains
+
+#include "lamb_data_types.contains"
+
+end module lamb_data_types

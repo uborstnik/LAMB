@@ -1,0 +1,23 @@
+module lamb_mp_window_types
+
+#include "lamb_defs.h"
+
+#include "lamb_mp_window_types.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_mp_window_types'
+
+
+#include "lamb_mp_window_types.publics"
+
+#include "lamb_mp_window_types.interfaces"
+
+
+  contains
+
+#include "lamb_mp_window_types.contains"
+
+end module lamb_mp_window_types

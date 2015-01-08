@@ -1,0 +1,23 @@
+module lamb_ptr_2d_util
+
+#include "lamb_defs.h"
+
+#include "lamb_ptr_2d_util.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_ptr_2d_util'
+
+
+#include "lamb_ptr_2d_util.publics"
+
+#include "lamb_ptr_2d_util.interfaces"
+
+
+  contains
+
+#include "lamb_ptr_2d_util.contains"
+
+end module lamb_ptr_2d_util

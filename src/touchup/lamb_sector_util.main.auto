@@ -1,0 +1,23 @@
+module lamb_sector_util
+
+#include "lamb_defs.h"
+
+#include "lamb_sector_util.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_sector_util'
+
+
+#include "lamb_sector_util.publics"
+
+#include "lamb_sector_util.interfaces"
+
+
+  contains
+
+#include "lamb_sector_util.contains"
+
+end module lamb_sector_util

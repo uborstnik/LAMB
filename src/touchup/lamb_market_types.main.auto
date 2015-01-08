@@ -1,0 +1,23 @@
+module lamb_market_types
+
+#include "lamb_defs.h"
+
+#include "lamb_market_types.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_market_types'
+
+
+#include "lamb_market_types.publics"
+
+#include "lamb_market_types.interfaces"
+
+
+  contains
+
+#include "lamb_market_types.contains"
+
+end module lamb_market_types

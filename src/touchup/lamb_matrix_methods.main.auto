@@ -1,0 +1,23 @@
+module lamb_matrix_methods
+
+#include "lamb_defs.h"
+
+#include "lamb_matrix_methods.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_matrix_methods'
+
+
+#include "lamb_matrix_methods.publics"
+
+#include "lamb_matrix_methods.interfaces"
+
+
+  contains
+
+#include "lamb_matrix_methods.contains"
+
+end module lamb_matrix_methods

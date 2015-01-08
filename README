@@ -1,0 +1,18 @@
+The LAMB Library
+
+Written by Urban Borštnik.
+
+Inspired by CP2K and DBCSR.
+
+Copyright (C) 2012, 2013, 2014 Urban Borštnik.
+
+The LAMB (Location-Aware Matrix Blocks) is a sparse matrix storage and
+multiplication library primarily developed electronic structure codes.
+
+Its main goal is superior scalability for sparse systems as well as
+high performance in all cases.
+
+The library is written in Fortran 2003. It is generally restricted to
+a subset of the language that is widely implemented in many
+compilers. Some optional parts, such as code needed to interact with
+non-standard hardware, may be written in other languages.

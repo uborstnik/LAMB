@@ -1,0 +1,23 @@
+module lamb_mp_mem_util
+
+#include "lamb_defs.h"
+
+#include "lamb_mp_mem_util.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_mp_mem_util'
+
+
+#include "lamb_mp_mem_util.publics"
+
+#include "lamb_mp_mem_util.interfaces"
+
+
+  contains
+
+#include "lamb_mp_mem_util.contains"
+
+end module lamb_mp_mem_util

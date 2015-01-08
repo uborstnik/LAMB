@@ -1,0 +1,23 @@
+module lamb_sector_methods
+
+#include "lamb_defs.h"
+
+#include "lamb_sector_methods.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_sector_methods'
+
+
+#include "lamb_sector_methods.publics"
+
+#include "lamb_sector_methods.interfaces"
+
+
+  contains
+
+#include "lamb_sector_methods.contains"
+
+end module lamb_sector_methods

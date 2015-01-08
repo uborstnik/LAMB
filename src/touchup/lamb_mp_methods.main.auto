@@ -1,0 +1,23 @@
+module lamb_mp_methods
+
+#include "lamb_defs.h"
+
+#include "lamb_mp_methods.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_mp_methods'
+
+
+#include "lamb_mp_methods.publics"
+
+#include "lamb_mp_methods.interfaces"
+
+
+  contains
+
+#include "lamb_mp_methods.contains"
+
+end module lamb_mp_methods

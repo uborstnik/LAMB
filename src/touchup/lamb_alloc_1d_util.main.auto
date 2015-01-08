@@ -1,0 +1,23 @@
+module lamb_alloc_1d_util
+
+#include "lamb_defs.h"
+
+#include "lamb_alloc_1d_util.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_alloc_1d_util'
+
+
+#include "lamb_alloc_1d_util.publics"
+
+#include "lamb_alloc_1d_util.interfaces"
+
+
+  contains
+
+#include "lamb_alloc_1d_util.contains"
+
+end module lamb_alloc_1d_util

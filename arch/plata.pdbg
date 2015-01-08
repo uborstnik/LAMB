@@ -1,0 +1,22 @@
+CC       = cc
+CPP      =
+FC       = mpif90
+LD       = mpif90
+AR       = ar -r
+
+DFLAGS = -DLAMB_GFORTRAN -DLAMB_HAS_smm_dnn -DLAMB_DEBUG -DSTANDALONE_TEST
+
+CPPFLAGS = $(DFLAGS)
+
+VENDOR_FLAGS = -g -O3 -ffast-math -funroll-loops -ftree-vectorize -march=native
+
+VENDOR_FLAGS = -g -O3 -ffast-math -funroll-loops -ftree-vectorize -march=native \
+           -fbacktrace -Warray-bounds -fbounds-check -Waliasing
+
+CFLAGS = $(VENDOR_FLAGS) $(DFLAGS)
+FCFLAGS = $(VENDOR_FLAGS) -ffree-form -fcray-pointer $(DFLAGS)
+
+LDFLAGS  = $(FCFLAGS)
+LIBS     = $(SMM_LIBS)
+
+# OBJECTS_ARCHITECTURE = lamb_gfortran.o

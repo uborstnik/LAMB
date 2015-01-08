@@ -1,0 +1,23 @@
+module lamb_matrix_types
+
+#include "lamb_defs.h"
+
+#include "lamb_matrix_types.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_matrix_types'
+
+
+#include "lamb_matrix_types.publics"
+
+#include "lamb_matrix_types.interfaces"
+
+
+  contains
+
+#include "lamb_matrix_types.contains"
+
+end module lamb_matrix_types

@@ -1,0 +1,23 @@
+module lamb_market_methods
+
+#include "lamb_defs.h"
+
+#include "lamb_market_methods.uses"
+
+  implicit none
+
+  private
+
+  character(len=*), parameter, private :: moduleN = 'lamb_market_methods'
+
+
+#include "lamb_market_methods.publics"
+
+#include "lamb_market_methods.interfaces"
+
+
+  contains
+
+#include "lamb_market_methods.contains"
+
+end module lamb_market_methods
